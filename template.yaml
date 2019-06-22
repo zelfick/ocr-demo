@@ -46,6 +46,11 @@ Resources:
                     - Ref: 'AWS::AccountId'
                     - ':table/'
                     - Ref: ResultsTable
+            - Effect: Allow
+              Action:
+                - 'xray:PutTraceSegments'
+                - 'xray:PutTelemetryRecords'
+              Resource: '*'
       Events:
         BucketEvent1:
           Type: S3
