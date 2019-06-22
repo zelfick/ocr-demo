@@ -1,7 +1,7 @@
+from __future__ import print_function
 import boto3
 from aws_xray_sdk.core import patch
 from aws_xray_sdk.core import xray_recorder
-from __future__ import print_function
 from decimal import Decimal
 import json
 import urllib
