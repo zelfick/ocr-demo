@@ -1,5 +1,7 @@
-from __future__ import print_function
 import boto3
+from aws_xray_sdk.core import patch
+from aws_xray_sdk.core import xray_recorder
+from __future__ import print_function
 from decimal import Decimal
 import json
 import urllib
@@ -7,6 +9,8 @@ import uuid
 import datetime
 import time
 import os
+
+patch(['boto3'])
 
 rekognition_client = boto3.client('rekognition')
 s3_client = boto3.client('s3')
@@ -17,10 +21,12 @@ table_name = os.environ['TABLE_NAME']
 
 # --------------- Helper Functions to call Rekognition APIs ------------------
 
+@xray_recorder.capture('detect_text')
 def detect_text(bucket, key):
     response = rekognition_client.detect_text(Image={"S3Object": {"Bucket": bucket, "Name": key}})
     return response
 
+@xray_recorder.capture('detect_labels')
 def detect_labels(bucket, key):
     response = rekognition_client.detect_labels(Image={"S3Object": {"Bucket": bucket, "Name": key}})
     return response

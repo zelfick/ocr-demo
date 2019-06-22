@@ -7,8 +7,10 @@ Resources:
   DetectTextInImage:
     Type: 'AWS::Serverless::Function'
     Properties:
+      Layers:
+        - arn:aws:lambda:us-west-2:700336187521:layer:boto3:1
       Handler: src/app.lambda_handler
-      Runtime: python3.6
+      Runtime: python3.7
       CodeUri: .
       Description: Uses Rekognition APIs to detect text in S3 Objects and stores the text and labels in DynamoDB.
       MemorySize: 256
