@@ -11,8 +11,13 @@ Resources:
       Runtime: python3.6
       CodeUri: .
       Description: Uses Rekognition APIs to detect text in S3 Objects and stores the text and labels in DynamoDB.
+<<<<<<< HEAD
       MemorySize: 512
       Timeout: 30
+=======
+      MemorySize: 256
+      Timeout: 45
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
       Environment:
         Variables:
           TABLE_NAME:
@@ -26,10 +31,13 @@ Resources:
               Resource: 'arn:aws:s3:::*'
             - Effect: Allow
               Action:
+<<<<<<< HEAD
                 - 's3:PutObject'
               Resource: !GetAtt FailedImageBucket.Arn 
             - Effect: Allow
               Action:
+=======
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                 - 'rekognition:DetectText'
                 - 'rekognition:DetectLabels'
               Resource: '*'
@@ -59,8 +67,11 @@ Resources:
   
   SourceImageBucket:
     Type: 'AWS::S3::Bucket'
+<<<<<<< HEAD
   FailedImageBucket:
     Type: 'AWS::S3::Bucket'
+=======
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
 
   ResultsTable:
     Type: AWS::Serverless::SimpleTable

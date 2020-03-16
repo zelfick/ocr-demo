@@ -18,18 +18,30 @@ Parameters:
     GithubRepo:
       Description: Gitub Repository name
       Type: AWS::SSM::Parameter::Value<String>
+<<<<<<< HEAD
       Default: /service/s3ocrlabels-pipeline/github/repo
+=======
+      Default: /service/aws-sam-ocr-pipeline/github/repo
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
 
     GithubToken:
       Description: Github OAuth Token with full permissions on admin:repo_hook and repo
       Type: AWS::SSM::Parameter::Value<String>
       NoEcho: true
+<<<<<<< HEAD
       Default: /service/s3ocrlabels-pipeline/github/token
+=======
+      Default: /service/aws-sam-ocr-pipeline/github/token
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
 
     GithubUser:
       Description: Github user where the repository lives
       Type: AWS::SSM::Parameter::Value<String>
+<<<<<<< HEAD
       Default: /service/s3ocrlabels-pipeline/github/user
+=======
+      Default: /service/aws-sam-ocr-pipeline/github/user
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
 
 
 Resources:
@@ -56,7 +68,11 @@ Resources:
               Value: !Ref AWS::StackName
             -
               Key: "Project"
+<<<<<<< HEAD
               Value: s3ocrlabels-pipeline
+=======
+              Value: aws-sam-ocr-pipeline
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
         DeletionPolicy: Retain
 
 ########  ##     ## #### ##       ########  
@@ -70,8 +86,13 @@ Resources:
     CodeBuildProject:
         Type: AWS::CodeBuild::Project
         Properties:
+<<<<<<< HEAD
             Name: s3ocrlabels-pipeline
             Description: Build project for the s3ocrlabels-pipeline
+=======
+            Name: aws-sam-ocr-pipeline
+            Description: Build project for the aws-sam-ocr-pipeline
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
             Artifacts:
               Type: CODEPIPELINE
             Environment: 
@@ -94,7 +115,11 @@ Resources:
                 Value: !Ref AWS::StackName
               -
                 Key: "Project"
+<<<<<<< HEAD
                 Value: s3ocrlabels-pipeline
+=======
+                Value: aws-sam-ocr-pipeline
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
 
 ########  #### ########  ######## ##       #### ##    ## ######## 
 ##     ##  ##  ##     ## ##       ##        ##  ###   ## ##       
@@ -110,7 +135,11 @@ Resources:
             ArtifactStore: 
                 Location: !Ref BuildArtifactsBucket
                 Type: S3
+<<<<<<< HEAD
             Name: s3ocrlabels-pipeline
+=======
+            Name: aws-sam-ocr-pipeline
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
             RoleArn: !GetAtt CodePipelineExecutionRole.Arn
             Stages:
                 - Name: Source
@@ -156,8 +185,13 @@ Resources:
                       # More info on Possible Values for Cloudformation: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/continuous-delivery-codepipeline-action-reference.html#w2ab2c13c13b9
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+<<<<<<< HEAD
                         StackName: s3ocrlabels-pipeline-Beta
                         ChangeSetName: s3ocrlabels-pipeline-ChangeSet-Beta
+=======
+                        StackName: aws-sam-ocr-pipeline-Beta
+                        ChangeSetName: aws-sam-ocr-pipeline-ChangeSet-Beta
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -172,10 +206,17 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+<<<<<<< HEAD
                         StackName: s3ocrlabels-pipeline-Beta
                         ChangeSetName: s3ocrlabels-pipeline-ChangeSet-Beta
                       OutputArtifacts:
                         - Name: s3ocrlabels-pipelineBetaChangeSet
+=======
+                        StackName: aws-sam-ocr-pipeline-Beta
+                        ChangeSetName: aws-sam-ocr-pipeline-ChangeSet-Beta
+                      OutputArtifacts:
+                        - Name: aws-sam-ocr-pipelineBetaChangeSet
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                       RunOrder: 2
                 - Name: Gamma
                   Actions:
@@ -188,8 +229,13 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+<<<<<<< HEAD
                         StackName: s3ocrlabels-pipeline-Gamma
                         ChangeSetName: s3ocrlabels-pipeline-ChangeSet-Gamma
+=======
+                        StackName: aws-sam-ocr-pipeline-Gamma
+                        ChangeSetName: aws-sam-ocr-pipeline-ChangeSet-Gamma
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -204,10 +250,17 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+<<<<<<< HEAD
                         StackName: s3ocrlabels-pipeline-Gamma
                         ChangeSetName: s3ocrlabels-pipeline-ChangeSet-Gamma
                       OutputArtifacts:
                         - Name: s3ocrlabels-pipelineGammaChangeSet
+=======
+                        StackName: aws-sam-ocr-pipeline-Gamma
+                        ChangeSetName: aws-sam-ocr-pipeline-ChangeSet-Gamma
+                      OutputArtifacts:
+                        - Name: aws-sam-ocr-pipelineGammaChangeSet
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                       RunOrder: 2
                 - Name: Prod
                   Actions:
@@ -227,8 +280,13 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_REPLACE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+<<<<<<< HEAD
                         StackName: s3ocrlabels-pipeline-Prod
                         ChangeSetName: s3ocrlabels-pipeline-ChangeSet-Prod
+=======
+                        StackName: aws-sam-ocr-pipeline-Prod
+                        ChangeSetName: aws-sam-ocr-pipeline-ChangeSet-Prod
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                         TemplatePath: BuildArtifactAsZip::packaged.yaml
                         Capabilities: CAPABILITY_IAM
                       InputArtifacts:
@@ -243,10 +301,17 @@ Resources:
                       Configuration:
                         ActionMode: CHANGE_SET_EXECUTE
                         RoleArn: !GetAtt CloudFormationExecutionRole.Arn
+<<<<<<< HEAD
                         StackName: s3ocrlabels-pipeline-Prod
                         ChangeSetName: s3ocrlabels-pipeline-ChangeSet-Prod
                       OutputArtifacts:
                         - Name: s3ocrlabels-pipelineProdChangeSet
+=======
+                        StackName: aws-sam-ocr-pipeline-Prod
+                        ChangeSetName: aws-sam-ocr-pipeline-ChangeSet-Prod
+                      OutputArtifacts:
+                        - Name: aws-sam-ocr-pipelineProdChangeSet
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                       RunOrder: 3
 
 
@@ -283,8 +348,13 @@ Resources:
                           - 'logs:CreateLogStream'
                           - 'logs:PutLogEvents'
                         Resource:
+<<<<<<< HEAD
                           - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/s3ocrlabels-pipeline'
                           - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/s3ocrlabels-pipeline:*'
+=======
+                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/aws-sam-ocr-pipeline'
+                          - !Sub 'arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/aws-sam-ocr-pipeline:*'
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                 - PolicyName: CodeBuildArtifactsBucket
                   PolicyDocument:
                     Version: '2012-10-17'
@@ -383,7 +453,11 @@ Resources:
                           - 'cloudformation:SetStackPolicy'
                           - 'cloudformation:ValidateTemplate'
                         Resource: 
+<<<<<<< HEAD
                           - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/s3ocrlabels-pipeline*/*'
+=======
+                          - !Sub 'arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/aws-sam-ocr-pipeline*/*'
+>>>>>>> e43a2f68981b202b7d2d54506ba83592010fd490
                           - !Sub 'arn:aws:cloudformation:${AWS::Region}:aws:transform/Serverless-2016-10-31'
 
 
